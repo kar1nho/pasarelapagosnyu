@@ -1,0 +1,186 @@
+.result-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--nyu-blue), var(--nyu-blue-med));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+
+.result-card {
+  width: 100%;
+  max-width: 700px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 36px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+  border-left: 6px solid #ced4da;
+}
+
+.payment-success {
+  border-left-color: var(--nyu-success);
+}
+
+.payment-rejected {
+  border-left-color: var(--nyu-danger);
+}
+
+.result-icon {
+  width: 82px;
+  height: 82px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 54px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.icon-success {
+  color: var(--nyu-success);
+  background: rgba(25, 135, 84, 0.12);
+}
+
+.icon-rejected {
+  color: var(--nyu-danger);
+  background: rgba(220, 53, 69, 0.12);
+}
+
+.title-nyu {
+  text-align: center;
+  color: var(--nyu-blue);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.payment-rejected .title-nyu {
+  color: var(--nyu-danger);
+}
+
+.subtitle-nyu {
+  text-align: center;
+  color: #6c757d;
+  margin-bottom: 26px;
+}
+
+.receipt-section {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 18px 22px;
+  margin-top: 24px;
+}
+
+.receipt-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 11px 0;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.receipt-row:last-child {
+  border-bottom: none;
+}
+
+.receipt-row span {
+  color: #6c757d;
+}
+
+.receipt-row strong {
+  color: #212529;
+  text-align: right;
+}
+
+.status-paid {
+  color: var(--nyu-success);
+}
+
+.status-rejected,
+.status-cancelled {
+  color: var(--nyu-danger);
+}
+
+.status-pending {
+  color: var(--nyu-warning);
+}
+
+.status-default {
+  color: #212529;
+}
+
+.rejection-box {
+  margin-top: 22px;
+  background: rgba(220, 53, 69, 0.10);
+  border: 1px solid rgba(220, 53, 69, 0.25);
+  border-left: 5px solid var(--nyu-danger);
+  border-radius: 12px;
+  padding: 18px 20px;
+}
+
+.rejection-box h6 {
+  color: var(--nyu-danger);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.rejection-box p {
+  margin: 0;
+  color: #842029;
+  font-weight: 600;
+}
+
+.result-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.btn-primary-result,
+.btn-secondary-result {
+  border-radius: 30px;
+  padding: 12px 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-primary-result {
+  border: none;
+  background: linear-gradient(135deg, var(--nyu-blue), var(--nyu-blue-med));
+  color: #ffffff;
+}
+
+.btn-danger-result {
+  background: linear-gradient(135deg, #b02a37, var(--nyu-danger));
+}
+
+.btn-secondary-result {
+  background: #ffffff;
+  color: var(--nyu-blue);
+  border: 1px solid var(--nyu-blue);
+}
+
+.btn-primary-result:hover,
+.btn-secondary-result:hover {
+  transform: translateY(-2px);
+}
+
+@media print {
+  .result-page {
+    background: #ffffff;
+    padding: 0;
+  }
+
+  .result-card {
+    box-shadow: none;
+    border: none;
+  }
+
+  .result-actions {
+    display: none;
+  }
+}

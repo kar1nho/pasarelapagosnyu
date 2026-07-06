@@ -1,0 +1,132 @@
+<div class="result-page">
+
+  <div
+    class="result-card"
+    [ngClass]="{
+      'payment-success': isApproved(),
+      'payment-rejected': isRejected()
+    }">
+
+    <div
+      class="result-icon"
+      [ngClass]="{
+        'icon-success': isApproved(),
+        'icon-rejected': isRejected()
+      }">
+
+      <span *ngIf="isApproved()">✓</span>
+      <span *ngIf="isRejected()">×</span>
+
+    </div>
+
+    <h2 class="title-nyu">
+      {{ getTitle() }}
+    </h2>
+
+    <h5 class="subtitle-nyu">
+      {{ getSubtitle() }}
+    </h5>
+
+    <div *ngIf="result; else noResult">
+
+      <div class="receipt-section">
+
+        <div class="receipt-row">
+          <span>Referencia</span>
+          <strong>{{ result.referenceId }}</strong>
+        </div>
+
+        <div class="receipt-row">
+          <span>Servicio</span>
+          <strong>{{ result.originService }}</strong>
+        </div>
+
+        <div class="receipt-row">
+          <span>Descripción</span>
+          <strong>{{ result.description }}</strong>
+        </div>
+
+        <div class="receipt-row">
+          <span>Monto</span>
+          <strong>
+            {{ result.amount | currency:'CLP':'symbol-narrow':'1.0-0' }}
+          </strong>
+        </div>
+
+        <div class="receipt-row">
+          <span>Método de pago</span>
+          <strong>{{ result.paymentMethod }}</strong>
+        </div>
+
+        <div class="receipt-row">
+          <span>Estado</span>
+          <strong [ngClass]="getStatusClass(result.status)">
+            {{ getStatusLabel(result.status) }}
+          </strong>
+        </div>
+
+        <div class="receipt-row">
+          <span>Fecha</span>
+          <strong>
+            {{ result.updatedAt || result.createdAt | date:'dd/MM/yyyy HH:mm' }}
+          </strong>
+        </div>
+
+      </div>
+
+      <div
+        class="rejection-box"
+        *ngIf="isRejected()">
+
+        <h6>Motivo del rechazo</h6>
+
+        <p>
+          {{ result.rejectionReason || 'La operación fue rechazada por el sistema.' }}
+        </p>
+
+      </div>
+
+      <div class="result-actions">
+
+        <button
+          *ngIf="isApproved()"
+          type="button"
+          class="btn-secondary-result"
+          (click)="printReceipt()">
+          Descargar PDF
+        </button>
+
+        <button
+          type="button"
+          class="btn-primary-result"
+          [ngClass]="{
+            'btn-danger-result': isRejected()
+          }"
+          (click)="returnToOrigin()">
+          Volver al sistema de origen
+        </button>
+
+      </div>
+
+    </div>
+
+    <ng-template #noResult>
+
+      <div class="alert alert-warning text-center">
+        No se encontró información del resultado del pago.
+      </div>
+
+      <div class="result-actions">
+        <button
+          type="button"
+          class="btn-primary-result"
+          (click)="returnToOrigin()">
+          Volver
+        </button>
+      </div>
+
+    </ng-template>
+
+  </div>
+
+</div>
