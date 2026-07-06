@@ -1,8 +1,28 @@
 {
-  "routes": [
+  "rewrites": [
     {
-      "src": "/.*",
-      "dest": "/index.html"
+      "source": "/payment/:path*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/login/:path*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/orders/:path*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/reports/:path*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/audit/:path*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/receipt/:path*",
+      "destination": "/index.html"
     }
   ]
 }
